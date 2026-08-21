@@ -1,8 +1,12 @@
 """Not: 'Partner - Ore Chase', 'Techstars streci yapildi fizda inceleme ile devam edecek',
-KWORKS, Turk Telekom Ventures, Sabanci gibi yatirimci/partner takibi icin model."""
+KWORKS, Turk Telekom Ventures, Sabanci gibi yatirimci/partner takibi icin model.
+Ayrica: 'Outlook/Partnership ... lifestyle collaboration - Partner (Toronto
+Operations) x Aston Martin, nathan.hoyt@astonmartin.com' notu -> iletisim
+bilgisi ve bir sonraki gorusme tarihini tutan alanlar eklendi."""
 import enum
+from datetime import datetime
 
-from sqlalchemy import Enum, String, Text
+from sqlalchemy import DateTime, Enum, String, Text
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.database import Base
@@ -27,6 +31,11 @@ class Investor(Base):
     )
     notes: Mapped[str] = mapped_column(Text, default="")
     documents_pending: Mapped[bool] = mapped_column(default=False)  # "belgeler yuklenecek"
+
+    # Outlook partnership e-postasi notundan: kontak kisisi ve bir sonraki gorusme
+    contact_name: Mapped[str] = mapped_column(String(200), default="")
+    contact_email: Mapped[str] = mapped_column(String(255), default="")
+    next_meeting_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
 
     def __repr__(self) -> str:  # pragma: no cover
         return f"<Investor {self.name} ({self.stage})>"

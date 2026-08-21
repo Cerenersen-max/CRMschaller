@@ -7,6 +7,7 @@ from app.models.bank import BankProvider
 from app.models.inventory import InventoryClassification
 from app.models.investor import InvestorStage
 from app.models.logistics import LogisticsFileStatus
+from app.models.meeting import MeetingCadence
 
 
 # ---- Investor ----
@@ -16,6 +17,9 @@ class InvestorBase(BaseModel):
     stage: InvestorStage = InvestorStage.lead
     notes: str = ""
     documents_pending: bool = False
+    contact_name: str = ""
+    contact_email: str = ""
+    next_meeting_at: datetime | None = None
 
 
 class InvestorCreate(InvestorBase):
@@ -94,3 +98,22 @@ class BankTransactionOut(BaseModel):
     fx_rate: float | None
     description: str
     booked_at: datetime
+
+
+# ---- Partner Meeting ("GUCA" haftalik toplanti) ----
+class PartnerMeetingBase(BaseModel):
+    title: str
+    cadence: MeetingCadence = MeetingCadence.weekly
+    day_of_week: str = ""
+    time_of_day: str = ""
+    agenda: str = ""
+    next_run_at: datetime | None = None
+
+
+class PartnerMeetingCreate(PartnerMeetingBase):
+    pass
+
+
+class PartnerMeetingOut(PartnerMeetingBase):
+    model_config = ConfigDict(from_attributes=True)
+    id: int

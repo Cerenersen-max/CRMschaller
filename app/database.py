@@ -36,6 +36,6 @@ def get_db() -> Generator[Session, None, None]:
 
 def init_db() -> None:
     """Tum modelleri import edip tablolari olusturur (gelistirme icin; prod'da Alembic onerilir)."""
-    from app.models import bank, integration_log, inventory, investor, logistics  # noqa: F401
+    from app.models import bank, integration_log, inventory, investor, logistics, meeting  # noqa: F401
 
     Base.metadata.create_all(bind=engine)

@@ -10,6 +10,32 @@ Bu belge, defter sayfalarındaki notların hangi kod dosyasına karşılık geld
 → `app/models/investor.py`, `app/routers/investors.py`
 → `app/models/logistics.py`, `app/routers/logistics.py`
 
+## Yeni sayfa: Outlook / Partnership - Aston Martin
+- "Outlook/microsoft, Partnership ... lifestyle collaboration, Partner (Toronto
+  Operations) x Aston Martin, mailto:nathan.hoyt@astonmartin.com, Mime-Version
+  (1.0), content-Type: text/plain; charset=utf-8; content-Transfer-encoding:
+  quoted printable"
+
+→ `app/models/investor.py` — `Investor`'a `contact_name`/`contact_email`/
+  `next_meeting_at` eklendi (notlardaki Outlook e-posta başlıklarına karşılık).
+→ `app/services/email_templates.py` — notlardaki MIME başlıklarını
+  (Mime-Version, charset=utf-8, quoted-printable) birebir üreten e-posta
+  şablonu + `build_aston_martin_partnership_email()` hazır fonksiyonu.
+→ `app/routers/investors.py` — `GET /investors/{id}/outreach-email-preview`
+  ile herhangi bir partner için bu formatta e-posta önizlemesi üretilir.
+→ `scripts/seed_partners.py` — bu sayfadaki Aston Martin kaydını, önceki
+  sayfalardaki KWORKS/Türk Telekom Ventures/Sabancı/Ore Chase kayıtlarıyla
+  **birleştirip** tek seferde veritabanına işler.
+
+## Yeni sayfa: GUCA haftalık toplantı ajandası
+- "GUCA: Pazartesi- 24.Ağustos.26 | 10:00 - haftalık ... veri tabanı
+  mimarisinin ilerleyerek tam yaklaşımı gerçekleştir. website Design
+  geliştirme odna 11:00. AI website Generator uygulaması incelyelim 20 dk."
+
+→ `app/models/meeting.py` (`PartnerMeeting`), `app/routers/meetings.py`
+→ `scripts/seed_partners.py` içindeki `NOTEBOOK_MEETINGS` — GUCA kaydını
+  24 Ağustos 2026 10:00 için önceden doldurur.
+
 ## Envanter Şablonu
 - "Envanter Şablonu → SPOFF analizi, SIA|RPO|ETO → Veri modeli/Sözleşme API, Dock, Faz-1"
 

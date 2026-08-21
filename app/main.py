@@ -11,7 +11,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 
 from app.database import init_db
-from app.routers import admin, banks, inventory, investors, logistics, reports
+from app.routers import admin, banks, inventory, investors, logistics, meetings, reports
 from app.services.report_scheduler import start_scheduler, stop_scheduler
 
 
@@ -31,6 +31,7 @@ app.include_router(logistics.router)
 app.include_router(banks.router)
 app.include_router(admin.router)
 app.include_router(reports.router)
+app.include_router(meetings.router)
 
 
 @app.get("/health")

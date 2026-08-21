@@ -24,10 +24,21 @@ uvicorn app.main:app --reload
 ```
 
 - `GET /health` — sağlık kontrolü
-- `/investors`, `/inventory`, `/logistics` — CRUD uç noktaları
+- `/investors`, `/inventory`, `/logistics`, `/meetings` — CRUD uç noktaları
+- `GET /investors/{id}/outreach-email-preview` — partner için MIME e-posta önizlemesi
 - `/banks/accounts`, `POST /banks/accounts/{id}/sync`, `/banks/fx-rates` — banka entegrasyonu
 - `/admin/export/transactions.csv|.xlsx`, `/admin/export/accounting-sync` — admin panel
 - `/reports/daily/run`, `/reports/daily/latest` — günlük sistem raporu
+
+## Defter notlarını veritabanına işleme
+
+Tüm sayfalardaki ortak/yatırımcı (KWORKS, Türk Telekom Ventures, Sabancı, Ore
+Chase, Aston Martin) ve haftalık toplantı (GUCA) kayıtlarını tek seferde
+eklemek için:
+
+```bash
+python -m scripts.seed_partners
+```
 
 ## Telegram bot
 
