@@ -20,7 +20,10 @@ def test_seed_creates_notebook_partners_and_meetings():
         assert {"KWORKS", "Turk Telekom Ventures", "Sabanci", "Ore Chase", "Aston Martin"} <= names
 
         aston_martin = db.query(Investor).filter_by(name="Aston Martin").first()
-        assert aston_martin.contact_email == "nathan.hoyt@astonmartin.com"
+        assert aston_martin is not None
+        # Gizlilik nedeniyle gercek iletisim bilgisi seed script'inde tutulmaz;
+        # admin panelden ayrica girilmesi beklenir.
+        assert aston_martin.contact_email == ""
 
         meetings = db.query(PartnerMeeting).filter_by(title="GUCA").all()
         assert len(meetings) == 1

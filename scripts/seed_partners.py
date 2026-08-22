@@ -44,14 +44,15 @@ NOTEBOOK_PARTNERS = [
         documents_pending=True,
     ),
     # Not: 'Outlook/Partnership ... lifestyle collaboration - Partner (Toronto
-    # Operations) x Aston Martin, nathan.hoyt@astonmartin.com'.
+    # Operations) x Aston Martin'. Gizlilik nedeniyle gercek kisi adi/e-postasi
+    # bu (git ile versiyonlanan) dosyaya yazilmaz; contact_name/contact_email
+    # admin panelden veya ayri, versiyonlanmayan bir .env/CSV kaynagindan
+    # doldurulmalidir.
     dict(
         name="Aston Martin",
         category="Lifestyle collaboration",
         stage=InvestorStage.lead,
         notes="Toronto Operations uzerinden ilk temas (Thu 16 Jul '26).",
-        contact_name="Nathan Hoyt",
-        contact_email="nathan.hoyt@astonmartin.com",
     ),
 ]
 

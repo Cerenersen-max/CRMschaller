@@ -1,8 +1,9 @@
 """Not: 'Partner - Ore Chase', 'Techstars streci yapildi fizda inceleme ile devam edecek',
 KWORKS, Turk Telekom Ventures, Sabanci gibi yatirimci/partner takibi icin model.
 Ayrica: 'Outlook/Partnership ... lifestyle collaboration - Partner (Toronto
-Operations) x Aston Martin, nathan.hoyt@astonmartin.com' notu -> iletisim
-bilgisi ve bir sonraki gorusme tarihini tutan alanlar eklendi."""
+Operations) x Aston Martin' notu -> iletisim bilgisi ve bir sonraki gorusme
+tarihini tutan alanlar eklendi (gercek kisi adi/e-postasi gizlilik nedeniyle
+kod icinde tutulmaz; contact_name/contact_email veritabani uzerinden girilir)."""
 import enum
 from datetime import datetime
 

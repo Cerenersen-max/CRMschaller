@@ -30,15 +30,18 @@ def build_partnership_email(
     return message
 
 
-def build_aston_martin_partnership_email() -> EmailMessage:
-    """Not: 'Partner (Toronto Operations) x Aston Martin,
-    nathan.hoyt@astonmartin.com' - lifestyle collaboration ilk temas e-postasi."""
+def build_aston_martin_partnership_email(to_name: str, to_email: str) -> EmailMessage:
+    """Not: 'Partner (Toronto Operations) x Aston Martin' - lifestyle
+    collaboration ilk temas e-postasi. Gizlilik nedeniyle gercek kisi
+    adi/e-postasi kod icinde tutulmaz; ilgili Investor kaydindan (bkz.
+    GET /investors/{id}/outreach-email-preview) cagiran taraf tarafindan
+    saglanir."""
     return build_partnership_email(
-        to_name="Nathan Hoyt (Aston Martin - Toronto Operations)",
-        to_email="nathan.hoyt@astonmartin.com",
+        to_name=to_name,
+        to_email=to_email,
         subject="Cenora x Aston Martin - Lifestyle Collaboration",
         body_text=(
-            "Merhaba Nathan,\n\n"
+            f"Merhaba {to_name},\n\n"
             "Cenora olarak Aston Martin ile bir lifestyle collaboration "
             "firsatini degerlendirmek isteriz. Uygun oldugunuz bir tarihte "
             "gorusme ayarlayabilir miyiz?\n\nSaygilarimizla,\nCenora Partnerships"

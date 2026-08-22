@@ -13,16 +13,18 @@ client = TestClient(app)
 
 
 def test_create_investor_with_contact_fields():
+    # Not: isim, scripts/seed_partners.py'nin ekledigi gercek 'Aston Martin'
+    # kaydiyla (paylasilan test DB'sinde) carpismasin diye kasitli farkli.
     payload = {
-        "name": "Aston Martin",
+        "name": "Aston Martin (test contact)",
         "category": "Lifestyle collaboration",
-        "contact_name": "Nathan Hoyt",
-        "contact_email": "nathan.hoyt@astonmartin.com",
+        "contact_name": "Partner Contact",
+        "contact_email": "partnerships@astonmartin.example",
     }
     response = client.post("/investors", json=payload)
     assert response.status_code == 201
     body = response.json()
-    assert body["contact_email"] == "nathan.hoyt@astonmartin.com"
+    assert body["contact_email"] == "partnerships@astonmartin.example"
 
 
 def test_outreach_email_preview():
@@ -50,8 +52,10 @@ def test_outreach_email_preview_requires_contact_email():
 
 
 def test_build_aston_martin_partnership_email():
-    message = build_aston_martin_partnership_email()
-    assert "nathan.hoyt@astonmartin.com" in message["To"]
+    message = build_aston_martin_partnership_email(
+        to_name="Partner Contact", to_email="partnerships@astonmartin.example"
+    )
+    assert "partnerships@astonmartin.example" in message["To"]
     assert "MIME-Version" in message
 
 

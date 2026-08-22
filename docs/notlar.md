@@ -12,9 +12,12 @@ Bu belge, defter sayfalarındaki notların hangi kod dosyasına karşılık geld
 
 ## Yeni sayfa: Outlook / Partnership - Aston Martin
 - "Outlook/microsoft, Partnership ... lifestyle collaboration, Partner (Toronto
-  Operations) x Aston Martin, mailto:nathan.hoyt@astonmartin.com, Mime-Version
-  (1.0), content-Type: text/plain; charset=utf-8; content-Transfer-encoding:
-  quoted printable"
+  Operations) x Aston Martin, mailto:[partner iletişim kişisi]@astonmartin.com,
+  Mime-Version (1.0), content-Type: text/plain; charset=utf-8;
+  content-Transfer-encoding: quoted printable"
+
+  (Not: gizlilik nedeniyle gerçek kişi adı/e-postası burada ve kodda yer
+  almıyor; `.env`/veritabanı üzerinden ayrıca girilmelidir.)
 
 → `app/models/investor.py` — `Investor`'a `contact_name`/`contact_email`/
   `next_meeting_at` eklendi (notlardaki Outlook e-posta başlıklarına karşılık).
